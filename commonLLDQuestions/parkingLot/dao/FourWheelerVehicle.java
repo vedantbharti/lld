@@ -7,4 +7,6 @@ public class FourWheelerVehicle extends Vehicle{
     public FourWheelerVehicle(String vehicleNo, VehicleType vehicleType) {
         super(vehicleNo,vehicleType);
     }
+
+
 }

@@ -47,4 +47,15 @@ public class Ticket {
     public void setDate(Date entryTime) {
         this.entryTime = entryTime;
     }
+
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketId=" + ticketId +
+                ", vehicleNo='" + vehicleNo + '\'' +
+                ", spotId=" + spotId +
+                ", entryTime=" + entryTime +
+                '}';
+    }
 }

@@ -57,4 +57,15 @@ public class ParkingSpot {
     public void setVehicleNo(String vehicleNo) {
         this.vehicleNo = vehicleNo;
     }
+
+    @Override
+    public String toString() {
+        return "ParkingSpot{" +
+                "spotId=" + spotId +
+                ", spotType=" + spotType +
+                ", isOccupied=" + isOccupied +
+                ", floorNo=" + floorNo +
+                ", vehicleNo='" + vehicleNo + '\'' +
+                '}';
+    }
 }
