@@ -1,6 +1,6 @@
 package commonLLDQuestions.splitwise.enums;
 
-public enum ExpenseStatus {
+public enum SettlementStatus {
 
     CREATED, PENDING, SETTLED;
 }

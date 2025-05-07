@@ -1,8 +1,10 @@
 package commonLLDQuestions.splitwise.repository;
 
 import commonLLDQuestions.splitwise.entities.Group;
+import commonLLDQuestions.splitwise.entities.User;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GroupRepository {
@@ -23,5 +25,18 @@ public class GroupRepository {
 
     //TODO: CRUD operations
 
+    public void addGroup(Group group){
+        groups.put(group.getGroupId(),group);
+    }
+
+    public Group getGroupById(int groupId){
+        return groups.get(groupId);
+    }
+
+    public synchronized void addUsersToGroup(int groupId, List<Integer> userIds){
+        Group group = groups.get(groupId);
+        List<Integer> users = group.getUsers();
+        users.addAll(userIds);
+    }
 
 }

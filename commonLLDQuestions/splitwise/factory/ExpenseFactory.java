@@ -1,8 +1,6 @@
 package commonLLDQuestions.splitwise.factory;
 
 import commonLLDQuestions.splitwise.entities.Expense;
-import commonLLDQuestions.splitwise.entities.GroupExpense;
-import commonLLDQuestions.splitwise.enums.ExpenseType;
 
 public class ExpenseFactory {
 

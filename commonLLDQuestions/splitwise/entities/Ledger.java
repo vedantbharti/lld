@@ -1,39 +1,43 @@
 package commonLLDQuestions.splitwise.entities;
 
+import commonLLDQuestions.splitwise.enums.SettlementStatus;
+
 import java.util.UUID;
 
 public class Ledger {
 
     private String ledgerId;
-    private int userId;
-    private int owedFromUserId;
+    private int creditorId;
+    private int debitorId;
     private double owedAmount;
+    private SettlementStatus settlementStatus;
 
-    public Ledger(int userId, int owedFromUserId, double owedAmount) {
+    public Ledger(int creditorId, int debitorId, double owedAmount) {
         this.ledgerId = UUID.randomUUID().toString();
-        this.userId = userId;
-        this.owedFromUserId = owedFromUserId;
+        this.creditorId = creditorId;
+        this.debitorId = debitorId;
         this.owedAmount = owedAmount;
+        this.settlementStatus = SettlementStatus.CREATED;
     }
 
     public String getLedgerId() {
         return ledgerId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getCreditorId() {
+        return creditorId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setCreditorId(int creditorId) {
+        this.creditorId = creditorId;
     }
 
-    public int getOwedFromUserId() {
-        return owedFromUserId;
+    public int getDebitorId() {
+        return debitorId;
     }
 
-    public void setOwedFromUserId(int owedFromUserId) {
-        this.owedFromUserId = owedFromUserId;
+    public void setDebitorId(int debitorId) {
+        this.debitorId = debitorId;
     }
 
     public double getOwedAmount() {
@@ -43,4 +47,14 @@ public class Ledger {
     public void setOwedAmount(double owedAmount) {
         this.owedAmount = owedAmount;
     }
+
+    public SettlementStatus getSettlementStatus() {
+        return settlementStatus;
+    }
+
+    public void setSettlementStatus(SettlementStatus settlementStatus) {
+        this.settlementStatus = settlementStatus;
+    }
+
+
 }

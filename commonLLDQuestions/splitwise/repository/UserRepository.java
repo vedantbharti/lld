@@ -1,8 +1,10 @@
 package commonLLDQuestions.splitwise.repository;
 
 import commonLLDQuestions.splitwise.entities.User;
+import commonLLDQuestions.splitwise.models.UserBalanceSheet;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserRepository {
@@ -35,13 +37,35 @@ public class UserRepository {
         users.put(user.getUserId(), user);
     }
 
-    public synchronized void updateTotalOwed(int userId, double newOwedAmount) {
-        User user = users.get(userId);
-        double newAmount = user.getTotalOwed() + newOwedAmount;
-        user.setTotalOwed(newAmount);
-    }
+//    public synchronized void updateTotalOwed(int userId, double newOwedAmount) {
+//        User user = users.get(userId);
+//        double newAmount = user.getTotalOwed() + newOwedAmount;
+//        user.setTotalOwed(newAmount);
+//    }
 
     public User getUserById(int userId){
         return users.get(userId);
     }
+
+    public synchronized void updateUserLedger(int userId, String ledgerId) {
+        User user = users.get(userId);
+        List<String> userLedger = user.getUserLedgers();
+        userLedger.add(ledgerId);
+    }
+
+    public List<String> getUserLedger(int userId){
+        return users.get(userId).getUserLedgers();
+    }
+
+    public UserBalanceSheet getBalanceSheet(int userId) {
+        return users.get(userId).getUserBalanceSheet();
+    }
+
+    public synchronized void updateBalanceSheet(int creditorId, int debitorId, double amount) {
+        double oldAmount = users.get(creditorId).getUserBalanceSheet().getUserVsBalance().get(debitorId);
+        users.get(creditorId).getUserBalanceSheet().getUserVsBalance().put(debitorId,oldAmount+amount);
+        double oldAmountOwed = users.get(creditorId).getUserBalanceSheet().getAmountOwed();
+        users.get(creditorId).getUserBalanceSheet().setAmountOwed(oldAmountOwed+amount);
+    }
+
 }
