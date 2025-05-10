@@ -1,6 +1,8 @@
 package commonLLDQuestions.splitwise.repository;
 
+import commonLLDQuestions.splitwise.entities.Expense;
 import commonLLDQuestions.splitwise.entities.User;
+import commonLLDQuestions.splitwise.exceptions.UserNotFoundException;
 import commonLLDQuestions.splitwise.models.UserBalanceSheet;
 
 import java.util.HashMap;
@@ -62,10 +64,28 @@ public class UserRepository {
     }
 
     public synchronized void updateBalanceSheet(int creditorId, int debitorId, double amount) {
-        double oldAmount = users.get(creditorId).getUserBalanceSheet().getUserVsBalance().get(debitorId);
+        double oldAmount = 0.0;
+        if(users.get(creditorId).getUserBalanceSheet().getUserVsBalance().containsKey(debitorId)) {
+            oldAmount = users.get(creditorId).getUserBalanceSheet().getUserVsBalance().get(debitorId);
+        }
         users.get(creditorId).getUserBalanceSheet().getUserVsBalance().put(debitorId,oldAmount+amount);
         double oldAmountOwed = users.get(creditorId).getUserBalanceSheet().getAmountOwed();
         users.get(creditorId).getUserBalanceSheet().setAmountOwed(oldAmountOwed+amount);
+    }
+
+    public synchronized void addExpense(Expense expense) {
+        users.get(expense.getPaidByUserId()).getExpenses().add(expense);
+    }
+
+    public List<Expense> getAllExpenses(int userId) {
+        if(!users.containsKey(userId)){
+            throw new UserNotFoundException("user with userId: " + userId + " is not in your friend list");
+        }
+        return users.get(userId).getExpenses();
+    }
+
+    public synchronized void removeUser(int userId){
+        users.remove(userId);
     }
 
 }

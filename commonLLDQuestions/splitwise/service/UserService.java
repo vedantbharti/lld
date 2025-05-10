@@ -1,6 +1,8 @@
 package commonLLDQuestions.splitwise.service;
 
+import commonLLDQuestions.splitwise.entities.Expense;
 import commonLLDQuestions.splitwise.entities.User;
+import commonLLDQuestions.splitwise.exceptions.UserNotFoundException;
 import commonLLDQuestions.splitwise.models.UserBalanceSheet;
 import commonLLDQuestions.splitwise.repository.UserRepository;
 
@@ -60,5 +62,13 @@ public class UserService {
                 .getUserVsBalance()
                 .put(settleWithId,0.0);
 
+    }
+
+    public synchronized void addExpense(Expense expense) {
+        userRepository.addExpense(expense);
+    }
+
+    public List<Expense> getAllExpenses(int userId) throws UserNotFoundException {
+        return userRepository.getAllExpenses(userId);
     }
 }

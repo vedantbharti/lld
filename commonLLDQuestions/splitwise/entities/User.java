@@ -10,14 +10,16 @@ public class User {
     private int userId;
     private String userName;
 //    private double totalOwed;
-    List<String> userLedgers;
-    UserBalanceSheet userBalanceSheet;
+    private List<String> userLedgers;
+    private List<Expense> expenses;
+    private UserBalanceSheet userBalanceSheet;
 
     public User(int userId, String userName) {
         this.userId = userId;
         this.userName = userName;
 //        this.totalOwed = 0;
         this.userLedgers = new ArrayList<>();
+        this.expenses = new ArrayList<>();
         this.userBalanceSheet = new UserBalanceSheet();
     }
 
@@ -55,5 +57,13 @@ public class User {
 
     public void setUserBalanceSheet(UserBalanceSheet userBalanceSheet) {
         this.userBalanceSheet = userBalanceSheet;
+    }
+
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
     }
 }

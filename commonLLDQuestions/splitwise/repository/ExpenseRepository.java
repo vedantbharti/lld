@@ -23,9 +23,20 @@ public class ExpenseRepository {
 
     //TODO: CRUD operations
 
+    public Expense getExpense(int expenseId) {
+        return expenses.get(expenseId);
+    }
 
     public void addExpense(Expense expense){
         expenses.put(expense.getExpenseId(), expense);
+    }
+
+    public synchronized void updateExpense(Expense expense) {
+        expenses.put(expense.getExpenseId(), expense);
+    }
+
+    public synchronized void deleteExpense(int expenseId) {
+        expenses.remove(expenseId);
     }
 
 }

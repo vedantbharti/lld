@@ -8,7 +8,7 @@ public class Group {
     private int groupId;
     private String groupName;
     private List<Integer> users;
-    private List<Integer> expenses;
+    private List<Expense> expenses;
 
 
     public Group(int groupId, String groupName) {
@@ -38,11 +38,11 @@ public class Group {
         this.users = users;
     }
 
-    public List<Integer> getExpenses() {
+    public List<Expense> getExpenses() {
         return expenses;
     }
 
-    public void setExpenses(List<Integer> expenses) {
+    public void setExpenses(List<Expense> expenses) {
         this.expenses = expenses;
     }
 }

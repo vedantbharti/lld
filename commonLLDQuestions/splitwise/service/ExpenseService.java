@@ -1,8 +1,6 @@
 package commonLLDQuestions.splitwise.service;
 
 import commonLLDQuestions.splitwise.entities.Expense;
-import commonLLDQuestions.splitwise.entities.Ledger;
-import commonLLDQuestions.splitwise.entities.User;
 import commonLLDQuestions.splitwise.repository.ExpenseRepository;
 
 import java.util.List;
@@ -13,6 +11,10 @@ public class ExpenseService {
 
     public ExpenseService(){
         this.expenseRepository = ExpenseRepository.getInstance();
+    }
+
+    public Expense getExpense(int expenseId) {
+        return expenseRepository.getExpense(expenseId);
     }
 
     public synchronized void addExpense(Expense expense) {
@@ -34,5 +36,14 @@ public class ExpenseService {
             }
         });
     }
+
+    public synchronized void updateExpense(Expense expense) {
+        expenseRepository.updateExpense(expense);
+    }
+
+    public synchronized void deleteExpense(int expenseId) {
+        expenseRepository.deleteExpense(expenseId);
+    }
+
 
 }
