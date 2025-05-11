@@ -49,16 +49,6 @@ public class UserRepository {
         return users.get(userId);
     }
 
-    public synchronized void updateUserLedger(int userId, String ledgerId) {
-        User user = users.get(userId);
-        List<String> userLedger = user.getUserLedgers();
-        userLedger.add(ledgerId);
-    }
-
-    public List<String> getUserLedger(int userId){
-        return users.get(userId).getUserLedgers();
-    }
-
     public UserBalanceSheet getBalanceSheet(int userId) {
         return users.get(userId).getUserBalanceSheet();
     }

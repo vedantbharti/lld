@@ -25,14 +25,6 @@ public class UserService {
         return userRepository.getUserById(userId);
     }
 
-//    public synchronized void updateTotalOwed(int userId, double newOwedAmount) {
-//        userRepository.updateTotalOwed(userId,newOwedAmount);
-//    }
-
-    public synchronized void updateUserLedger(int userId, String ledgerId) {
-        userRepository.updateUserLedger(userId,ledgerId);
-    }
-
     public UserBalanceSheet getBalanceSheet(int userId){
         return userRepository.getBalanceSheet(userId);
     }
