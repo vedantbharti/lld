@@ -10,7 +10,6 @@ public class Expense {
     private int expenseId;
     private int paidByUserId;
     private double amount;
-//    private List<Integer> ledgers;
     private SettlementStatus settlementStatus;
     private Map<Integer,Double> expenseDistribution;
     private List<Integer> involvedUserIds;
@@ -20,7 +19,6 @@ public class Expense {
         this.paidByUserId = paidByUserId;
         this.amount = amount;
         this.expenseDistribution = expenseDistribution;
-//        this.ledgers = ledgers;
         this.settlementStatus = SettlementStatus.CREATED;
         this.involvedUserIds = involvedUserIds;
     }
@@ -44,14 +42,6 @@ public class Expense {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-
-    //    public List<Integer> getLedgers() {
-//        return ledgers;
-//    }
-//
-//    public void setLedgers(List<Integer> ledgers) {
-//        this.ledgers = ledgers;
-//    }
 
     public SettlementStatus getExpenseStatus() {
         return settlementStatus;
