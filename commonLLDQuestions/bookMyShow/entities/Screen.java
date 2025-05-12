@@ -3,6 +3,7 @@ package commonLLDQuestions.bookMyShow.entities;
 import commonLLDQuestions.bookMyShow.enums.SeatType;
 import commonLLDQuestions.bookMyShow.models.Seat;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ public class Screen {
     private int totalSeats;
     private Map<SeatType, Integer> availableSeats;
     private Map<SeatType, List<Seat>> seatMap;
+    private List<Seat> bookedSeats;
 
     public Screen(int screenId, int screenNumber, int totalSeats) {
         this.screenId = screenId;
@@ -21,6 +23,7 @@ public class Screen {
         this.totalSeats = totalSeats;
         this.availableSeats = new HashMap<>();
         this.seatMap = new HashMap<>();
+        this.bookedSeats = new ArrayList<>();
     }
 
 
@@ -62,5 +65,13 @@ public class Screen {
 
     public void setSeatMap(Map<SeatType, List<Seat>> seatMap) {
         this.seatMap = seatMap;
+    }
+
+    public List<Seat> getBookedSeats() {
+        return bookedSeats;
+    }
+
+    public void setBookedSeats(List<Seat> bookedSeats) {
+        this.bookedSeats = bookedSeats;
     }
 }

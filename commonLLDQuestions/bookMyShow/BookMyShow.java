@@ -1,12 +1,11 @@
 package commonLLDQuestions.bookMyShow;
 
+import commonLLDQuestions.bookMyShow.entities.*;
 import commonLLDQuestions.bookMyShow.enums.SeatStatus;
 import commonLLDQuestions.bookMyShow.enums.SeatType;
+import commonLLDQuestions.bookMyShow.exceptions.SeatAlreadyBookedException;
+import commonLLDQuestions.bookMyShow.exceptions.TicketGenerationFailedException;
 import commonLLDQuestions.bookMyShow.models.Movie;
-import commonLLDQuestions.bookMyShow.entities.Show;
-import commonLLDQuestions.bookMyShow.entities.Theatre;
-import commonLLDQuestions.bookMyShow.entities.User;
-import commonLLDQuestions.bookMyShow.entities.Screen;
 import commonLLDQuestions.bookMyShow.models.Seat;
 import commonLLDQuestions.bookMyShow.service.*;
 
@@ -99,6 +98,22 @@ public class BookMyShow {
         availableSeats.stream().forEach(seat -> System.out.println(seat.getSeatNumber() + " " + seat.getSeatType() + " " + seat.getSeatStatus()));
 
         //select seat and update seat map
+        Seat seatA = availableSeats.get(0);
+        Seat seatB = availableSeats.get(1);
+
+        try {
+            Ticket ticket = ticketService.bookTicket(show2,Arrays.asList(seatA,seatB));
+            System.out.println("Ticket has been generated with following details: " +
+                    "screen: " + ticket.getShow().getScreen().getScreenId() +
+                    " " + "movie: " + ticket.getShow().getMovie().getMovieName());
+            System.out.println("seat numbers are: ");
+            ticket.getBookedSeats().stream().forEach(seat -> System.out.println(seat.getSeatNumber() + " "));
+
+        } catch (SeatAlreadyBookedException e) {
+            System.out.println(e.getMessage());
+        } catch (TicketGenerationFailedException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }

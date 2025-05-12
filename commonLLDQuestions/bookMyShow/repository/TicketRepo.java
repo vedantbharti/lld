@@ -20,4 +20,8 @@ public class TicketRepo {
     public static TicketRepo getInstance() {
         return TicketRepo.Initializer.INSTANCE;
     }
+
+    public synchronized void addTicket(Ticket ticket) {
+        tickets.put(ticket.getTicketId(),ticket);
+    }
 }

@@ -9,13 +9,13 @@ public class Ticket {
     private int ticketId;
     private Show show;
     private List<Seat> bookedSeats;
-    private Payment payment;
+    private double paymentAmount;
 
-    public Ticket(int ticketId, Show show, List<Seat> bookedSeats, Payment payment) {
+    public Ticket(int ticketId, Show show, List<Seat> bookedSeats, double paymentAmount) {
         this.ticketId = ticketId;
         this.show = show;
         this.bookedSeats = bookedSeats;
-        this.payment = payment;
+        this.paymentAmount = paymentAmount;
     }
 
     public int getTicketId() {
@@ -42,11 +42,11 @@ public class Ticket {
         this.bookedSeats = bookedSeats;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public double getPayment() {
+        return paymentAmount;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setPayment(double paymentAmount) {
+        this.paymentAmount = paymentAmount;
     }
 }
