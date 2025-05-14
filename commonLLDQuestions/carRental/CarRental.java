@@ -1,12 +1,16 @@
 package commonLLDQuestions.carRental;
 
+import commonLLDQuestions.carRental.entities.Booking;
 import commonLLDQuestions.carRental.entities.Store;
 import commonLLDQuestions.carRental.entities.User;
 import commonLLDQuestions.carRental.entities.Vehicle;
+import commonLLDQuestions.carRental.enums.BookingStatus;
 import commonLLDQuestions.carRental.enums.VehicleType;
+import commonLLDQuestions.carRental.exception.VehicleAlreadyAddedException;
 import commonLLDQuestions.carRental.models.Location;
 import commonLLDQuestions.carRental.service.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class CarRental {
@@ -21,6 +25,8 @@ public class CarRental {
 
         //create objects
         intialize();
+
+        //tried chain of responsibility design pattern in this question
     }
 
     public static void intialize() {
@@ -48,25 +54,58 @@ public class CarRental {
 
         //create stores
         Store store1 = new Store(1,location1);
-        Store store2 = new Store(1, location2);
+        Store store2 = new Store(2, location2);
 
         storeService.addStore(store1);
         storeService.addStore(store2);
 
         //add vehicles to stores
-        storeService.addVehiclesToStore(store1.getStoreId(),vehicle1);
-        storeService.addVehiclesToStore(store1.getStoreId(),vehicle2);
-        storeService.addVehiclesToStore(store2.getStoreId(),vehicle2);
-        storeService.addVehiclesToStore(store2.getStoreId(),vehicle4);
+        try {
+            storeService.addVehiclesToStore(store1.getStoreId(),vehicle1);
+            storeService.addVehiclesToStore(store1.getStoreId(),vehicle3);
+            storeService.addVehiclesToStore(store2.getStoreId(),vehicle2);
+            storeService.addVehiclesToStore(store2.getStoreId(),vehicle4);
+        } catch (VehicleAlreadyAddedException e) {
+            System.out.println(e.getMessage());
+        }
 
         //get all stores based on location
         List<Store> stores = storeService.getStoresForLocation(location1);
 
         //for a particular store, get all available vehicles with vehicleTypes
-        List<Vehicle> twoWheelers = storeService.getAvailableVehicle(stores.get(0).getStoreId(),VehicleType.TWO_WHEELER);
-        List<Vehicle> fourWheelers = storeService.getAvailableVehicle(stores.get(1).getStoreId(),VehicleType.FOUR_WHEELER);
+        List<Vehicle> twoWheelers = storeService.getAvailableVehicles(stores.get(0).getStoreId(),VehicleType.TWO_WHEELER);
+        List<Vehicle> fourWheelers = storeService.getAvailableVehicles(stores.get(0).getStoreId(),VehicleType.FOUR_WHEELER);
 
         //TODO: select a vehicle to book
+
+        Vehicle selectedTwoWheeler = twoWheelers.get(0);
+        Vehicle selectedFourWheeler = fourWheelers.get(0);
+
+        Booking booking1 = bookingService.bookVehicle(1,user1.getUserId(),selectedTwoWheeler, new Date(2025,05,15), new Date(2025,05,17));
+        Booking booking2 = bookingService.bookVehicle(2,user2.getUserId(),selectedFourWheeler, new Date(2025,05,20), new Date(2025,05,22));
+
+        // complete ride and return vehicle
+        booking1.setBookingStatus(BookingStatus.COMPLETED);
+        System.out.println("booking1 is completed with following details: " +
+                "vehicle number: " + booking1.getVehicleNo() + " " +
+                "user id: " + booking1.getUserId() + " " +
+                "payment id: " + booking1.getPaymentId() + " " +
+                "booking status: " + booking1.getBookingStatus()
+        );
+
+        System.out.println("payment status is: " + paymentService.getPaymentDetails(booking1.getPaymentId()).getPaymentStatus());
+
+        //cancel Booking
+        Booking cancelledBooking = bookingService.cancelBooking(booking2.getBookingId());
+
+        System.out.println("booking2 is cancelled with following details: " +
+                "vehicle number: " + booking2.getVehicleNo() + " " +
+                "user id: " + booking2.getUserId() + " " +
+                "payment id: " + booking2.getPaymentId() + " " +
+                "booking status: " + booking2.getBookingStatus()
+        );
+
+        System.out.println("payment status is: " + paymentService.getPaymentDetails(booking2.getPaymentId()).getPaymentStatus());
 
     }
 }

@@ -1,5 +1,7 @@
 package commonLLDQuestions.carRental.entities;
 
+import commonLLDQuestions.carRental.enums.BookingStatus;
+
 import java.util.Date;
 
 public class Booking {
@@ -10,16 +12,17 @@ public class Booking {
     private Date bookingTime;
     private Date startTime;
     private Date endTime;
-    private int paymentId;
+    private String paymentId;
+    private BookingStatus bookingStatus;
 
-    public Booking(int bookingId, int userId, int vehicleNo, Date startTime, Date endTime, int paymentId) {
+    public Booking(int bookingId, int userId, int vehicleNo, Date startTime, Date endTime) {
         this.bookingId = bookingId;
         this.userId = userId;
         this.vehicleNo = vehicleNo;
         this.bookingTime = new Date();
         this.startTime = startTime;
         this.endTime = endTime;
-        this.paymentId = paymentId;
+        this.bookingStatus = BookingStatus.INACTIVE;
     }
 
     public int getBookingId() {
@@ -70,11 +73,20 @@ public class Booking {
         this.endTime = endTime;
     }
 
-    public int getPaymentId() {
+    public String getPaymentId() {
         return paymentId;
     }
 
-    public void setPayment(int paymentId) {
+    public void setPaymentId(String paymentId) {
         this.paymentId = paymentId;
     }
+
+    public BookingStatus getBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setBookingStatus(BookingStatus bookingStatus) {
+        this.bookingStatus = bookingStatus;
+    }
+
 }
