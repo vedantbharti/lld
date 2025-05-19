@@ -4,5 +4,5 @@ public interface EvictionStrategy<K> {
 
     void updateKeyAccessStatus(K key);
 
-    K evictKey();
+    K evict();
 }

@@ -9,4 +9,6 @@ public interface Storage <K,V> {
 
     public void remove(K key);
 
+    public int getSize();
+
 }
