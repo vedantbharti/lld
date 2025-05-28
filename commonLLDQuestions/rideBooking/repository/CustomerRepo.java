@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CustomerRepo {
 
-    private Map<Integer, Customer> customers;
+    private Map<String, Customer> customers;
 
     private CustomerRepo() {
         this.customers = new ConcurrentHashMap<>();
@@ -19,5 +19,13 @@ public class CustomerRepo {
 
     public static CustomerRepo getInstance(){
         return CustomerRepo.Initializer.INSTANCE;
+    }
+
+    public void addCustomer(Customer customer) {
+        customers.put(customer.getUserId(),customer);
+    }
+
+    public Customer getCustomerById(String customerId) {
+        return customers.get(customerId);
     }
 }

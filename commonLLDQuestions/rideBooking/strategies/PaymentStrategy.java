@@ -1,8 +1,9 @@
 package commonLLDQuestions.rideBooking.strategies;
 
+import commonLLDQuestions.rideBooking.entity.Payment;
 import commonLLDQuestions.rideBooking.enums.PaymentStatus;
 
 public interface PaymentStrategy {
 
-    public PaymentStatus makePayment(int amount, int bookingId);
+    public Payment makePayment(double amount, String bookingId);
 }

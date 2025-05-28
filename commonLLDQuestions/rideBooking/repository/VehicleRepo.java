@@ -20,4 +20,12 @@ public class VehicleRepo {
     public static VehicleRepo getInstance(){
         return VehicleRepo.Initializer.INSTANCE;
     }
+
+    public void addVehicle(Vehicle vehicle) {
+        vehicles.put(vehicle.getVehicleNo(),vehicle);
+    }
+
+    public Vehicle getVehicleByNumber(String vehicleNo) {
+        return vehicles.get(vehicleNo);
+    }
 }

@@ -5,17 +5,19 @@ import commonLLDQuestions.rideBooking.enums.PaymentType;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 public class Payment {
 
-    private final int paymentId;
-    private final int bookingId;
+    private final String paymentId;
+    private final String bookingId;
     private final double amount;
     private PaymentStatus paymentStatus;
     private PaymentType paymentType;
 
-    public Payment(int paymentId, int bookingId, double amount, PaymentType paymentType) {
-        this.paymentId = paymentId;
+    public Payment(String bookingId, double amount, PaymentType paymentType) {
+        this.paymentId = UUID.randomUUID().toString();
         this.bookingId = bookingId;
         this.amount = amount;
         this.paymentStatus = PaymentStatus.ACTIVE;

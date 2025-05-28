@@ -10,8 +10,8 @@ public class Driver extends User{
     private boolean isAvailable;
     private String vehicleNo;
 
-    public Driver(int userId, String userName, UserType userType) {
-        super(userId, userName, userType);
+    public Driver(String userName, UserType userType) {
+        super(userName, userType);
         this.isAvailable = true;
         this.vehicleNo = "";
     }

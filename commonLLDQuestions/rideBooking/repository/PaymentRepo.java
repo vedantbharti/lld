@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PaymentRepo {
 
-    private Map<Integer, Payment> payments;
+    private Map<String, Payment> payments;
 
     private PaymentRepo() {
         this.payments = new ConcurrentHashMap<>();
@@ -19,5 +19,9 @@ public class PaymentRepo {
 
     public static PaymentRepo getInstance(){
         return PaymentRepo.Initializer.INSTANCE;
+    }
+
+    public void addPayment(Payment payment) {
+        payments.put(payment.getPaymentId(),payment);
     }
 }

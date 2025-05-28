@@ -7,21 +7,22 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Data
 public class User {
 
-    private int userId;
+    private String userId;
     private String userName;
-    private List<Integer> bookings;
+    private List<String> bookings;
     private UserType userType;
     private Location location;
 
     public User(){}
 
-    public User(int userId, String userName, UserType userType) {
-        this.userId = userId;
+    public User(String userName, UserType userType) {
+        this.userId = UUID.randomUUID().toString();
         this.userName = userName;
         this.userType = userType;
         this.bookings = new ArrayList<>();

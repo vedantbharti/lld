@@ -7,27 +7,28 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 public class Booking {
 
-    private final int bookingId;
-    private final int driverId;
-    private final int customerId;
+    private final String bookingId;
+    private final String driverId;
+    private final String customerId;
     private Date bookingStartTime;
     private Date bookingEndTime;
-    private Location startLocation;
+    private Location pickupLocation;
     private Location dropLocation;
     private BookingStatus bookingStatus;
     private double totalCost;
 
-    public Booking(int bookingId, int driverId, int customerId, double totalCost, Date bookingStartTime, Location startLocation, Location dropLocation){
-        this.bookingId = bookingId;
+    public Booking(String driverId, String customerId, double totalCost, Date bookingStartTime, Location pickupLocation, Location dropLocation){
+        this.bookingId = UUID.randomUUID().toString();
         this.driverId = driverId;
         this.customerId = customerId;
         this.bookingStartTime = bookingStartTime;
         this.bookingEndTime = null;
-        this.startLocation = startLocation;
+        this.pickupLocation = pickupLocation;
         this.dropLocation = dropLocation;
         this.bookingStatus = BookingStatus.ACTIVE;
         this.totalCost = totalCost;

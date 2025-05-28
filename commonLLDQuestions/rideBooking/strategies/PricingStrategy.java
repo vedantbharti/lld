@@ -1,6 +1,10 @@
 package commonLLDQuestions.rideBooking.strategies;
 
+import commonLLDQuestions.rideBooking.model.Location;
+
+import java.util.List;
+
 public interface PricingStrategy {
 
-    public double calculatePrice(int bookingId);
+    public List<Double> calculatePrice(Location pickupLocation, Location dropLocation);
 }
