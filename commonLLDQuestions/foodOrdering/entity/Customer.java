@@ -10,13 +10,13 @@ import java.util.List;
 public class Customer extends User{
 
     private Location address;
-    private List<String> orders;
+    private List<String> orderIds;
     private String cartId;
 
     public Customer(String customerName){
         super(customerName);
         this.address = null;
-        this.orders = new ArrayList<>();
+        this.orderIds = new ArrayList<>();
         this.cartId = null;
     }
 }

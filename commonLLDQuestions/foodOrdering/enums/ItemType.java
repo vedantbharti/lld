@@ -1,6 +1,6 @@
 package commonLLDQuestions.foodOrdering.enums;
 
-public enum FoodType {
+public enum ItemType {
 
     MEAL, DESSERT, SNACKS, SWEETS;
 }

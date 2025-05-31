@@ -1,5 +1,6 @@
 package commonLLDQuestions.foodOrdering.entity;
 
+import commonLLDQuestions.foodOrdering.enums.DiscountType;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -10,11 +11,13 @@ public class Coupon {
 
     private String id;
     private String name;
-    private BigDecimal discount;
+    private double discount;
+    private DiscountType discountType;
 
-    public Coupon(String name, BigDecimal discount){
+    public Coupon(String name, double discount, DiscountType discountType){
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.discount = discount;
+        this.discountType = discountType;
     }
 }
