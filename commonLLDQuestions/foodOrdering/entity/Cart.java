@@ -11,13 +11,15 @@ import java.util.UUID;
 public class Cart {
 
     private String cartId;
+    private String customerId;
     private String resturantId;
     private List<String> items;
     private double totalCost;
     private String selectedCouponId;
 
-    public Cart() {
+    public Cart(String customerId) {
         this.cartId = UUID.randomUUID().toString();
+        this.customerId = customerId;
         this.items = Collections.synchronizedList(new ArrayList<>());
         this.totalCost = 0;
         this.selectedCouponId = null;

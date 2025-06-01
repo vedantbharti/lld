@@ -21,4 +21,8 @@ public class OrderRepo {
     public static OrderRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public synchronized void addOrUpdateOrder(Order order) {
+        orders.put(order.getOrderId(),order);
+    }
 }

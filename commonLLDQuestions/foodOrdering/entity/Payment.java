@@ -1,5 +1,6 @@
 package commonLLDQuestions.foodOrdering.entity;
 
+import commonLLDQuestions.foodOrdering.enums.PaymentStatus;
 import lombok.Data;
 
 import java.util.UUID;
@@ -9,12 +10,14 @@ public class Payment {
 
     private String paymentId;
     private double amount;
-    private String orderId;
+    private String customerId;
+    private PaymentStatus paymentStatus;
 
 
-    public Payment(double amount, String orderId) {
+    public Payment(double amount, String customerId) {
         this.paymentId = UUID.randomUUID().toString();
         this.amount = amount;
-        this.orderId = orderId;
+        this.customerId = customerId;
+        this.paymentStatus = PaymentStatus.ACTIVE;
     }
 }

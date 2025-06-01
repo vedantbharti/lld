@@ -20,4 +20,8 @@ public class PaymentRepo {
     public static PaymentRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public synchronized void addPayment(Payment payment) {
+        payments.put(payment.getPaymentId(),payment);
+    }
 }

@@ -20,4 +20,12 @@ public class ItemRepo {
     public static ItemRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public synchronized void addOrUpdateItem(Item item) {
+        items.put(item.getId(),item);
+    }
+
+    public Item getItemById(String itemId) {
+        return items.get(itemId);
+    }
 }

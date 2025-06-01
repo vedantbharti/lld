@@ -20,4 +20,12 @@ public class CustomerRepo {
     public static CustomerRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public synchronized void addOrUpdateCustomer(Customer customer) {
+        customers.put(customer.getUserId(),customer);
+    }
+
+    public Customer getCustomerById(String customerId) {
+        return customers.get(customerId);
+    }
 }

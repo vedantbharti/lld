@@ -20,4 +20,8 @@ public class RestaurantRepo {
     public static RestaurantRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public synchronized void addRestaurant(Restaurant restaurant) {
+        restaurants.put(restaurant.getId(), restaurant);
+    }
 }

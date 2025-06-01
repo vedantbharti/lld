@@ -20,4 +20,12 @@ public class DeliveryPersonRepo {
     public static DeliveryPersonRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public synchronized void addOrUpdateDeliveryperson(DeliveryPerson deliveryPerson) {
+        deliveryPersons.put(deliveryPerson.getUserId(),deliveryPerson);
+    }
+
+    public DeliveryPerson getDeliveryPersonById(String deliveryPersonId) {
+        return deliveryPersons.get(deliveryPersonId);
+    }
 }

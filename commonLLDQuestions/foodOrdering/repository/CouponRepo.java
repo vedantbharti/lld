@@ -20,4 +20,8 @@ public class CouponRepo {
     public static CouponRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public synchronized void addOrUpdateCoupon(Coupon coupon) {
+        coupons.put(coupon.getId(),coupon);
+    }
 }
