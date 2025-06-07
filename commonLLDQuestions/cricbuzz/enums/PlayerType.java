@@ -1,0 +1,6 @@
+package commonLLDQuestions.cricbuzz.enums;
+
+public enum PlayerType {
+
+    RIGHT_HANDED_BATSMAN, LEFT_HANDED_BATSMAN, RIGHT_ARM_BOWLER, LEFT_ARM_BOWLER, BATTING_ALLROUNDER, BOWLING_ALLROUNDER;
+}
