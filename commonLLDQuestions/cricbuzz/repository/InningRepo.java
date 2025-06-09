@@ -20,4 +20,12 @@ public class InningRepo {
     public static InningRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public void addInning(Inning inning) {
+        innings.put(inning.getInningId(),inning);
+    }
+
+    public Inning getInningById(String inningId) {
+        return innings.get(inningId);
+    }
 }

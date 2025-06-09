@@ -177,46 +177,33 @@ public class Cricbuzz {
         //after each bowl update scorecard, for each of the three players
 
         Bowl bowl1 = new Bowl(BowlType.NORMAL,australianPlayer8.getPlayerId(),indianPlayer1.getPlayerId(),4,false,null);
-        bowlerScoreCardService.updateScoreCard(australianPlayer8ScoreCard.getScoreCardId(),4,false,null);
-        batsmanScoreCardService.updateScoreCard(indianPlayer1ScoreCard.getScoreCardId(),4,false,null);
         bowlService.addBowl(bowl1);
-        inningService.updateTotalScore(inning1.getInningId(),4);
+        scoreUpdaterService.updateScore(inning1.getInningId(),australianPlayer8ScoreCard.getScoreCardId(),indianPlayer1ScoreCard.getScoreCardId(),bowl1.getBowlType(),4,false,null);
 
         Bowl bowl2 = new Bowl(BowlType.NORMAL,australianPlayer8.getPlayerId(),indianPlayer1.getPlayerId(),1,false,null);
-        bowlerScoreCardService.updateScoreCard(australianPlayer8ScoreCard.getScoreCardId(),1,false,null);
-        batsmanScoreCardService.updateScoreCard(indianPlayer1ScoreCard.getScoreCardId(),1,false,null);
-        bowlService.addBowl(bowl1);
-        inningService.updateTotalScore(inning1.getInningId(),1);
+        bowlService.addBowl(bowl2);
+        scoreUpdaterService.updateScore(inning1.getInningId(),australianPlayer8ScoreCard.getScoreCardId(),indianPlayer1ScoreCard.getScoreCardId(),bowl2.getBowlType(),1,false,null);
 
         Bowl bowl3 = new Bowl(BowlType.NORMAL,australianPlayer8.getPlayerId(),indianPlayer2.getPlayerId(),2,false,null);
-        bowlerScoreCardService.updateScoreCard(australianPlayer8ScoreCard.getScoreCardId(),2,false,null);
-        batsmanScoreCardService.updateScoreCard(indianPlayer2ScoreCard.getScoreCardId(),2,false,null);
-        bowlService.addBowl(bowl1);
-        inningService.updateTotalScore(inning1.getInningId(),2);
+        bowlService.addBowl(bowl3);
+        scoreUpdaterService.updateScore(inning1.getInningId(),australianPlayer8ScoreCard.getScoreCardId(),indianPlayer2ScoreCard.getScoreCardId(),bowl3.getBowlType(),2,false,null);
 
         Bowl bowl4 = new Bowl(BowlType.NORMAL,australianPlayer8.getPlayerId(),indianPlayer2.getPlayerId(),3,false,null);
-        bowlerScoreCardService.updateScoreCard(australianPlayer8ScoreCard.getScoreCardId(),3,false,null);
-        batsmanScoreCardService.updateScoreCard(indianPlayer2ScoreCard.getScoreCardId(),3,false,null);
-        bowlService.addBowl(bowl1);
-        inningService.updateTotalScore(inning1.getInningId(),3);
+        bowlService.addBowl(bowl4);
+        scoreUpdaterService.updateScore(inning1.getInningId(),australianPlayer8ScoreCard.getScoreCardId(),indianPlayer2ScoreCard.getScoreCardId(),bowl4.getBowlType(),3,false,null);
 
         Bowl bowl5 = new Bowl(BowlType.WIDE_BALL,australianPlayer8.getPlayerId(),indianPlayer1.getPlayerId(),1,false,null);
-        bowlerScoreCardService.updateScoreCard(australianPlayer8ScoreCard.getScoreCardId(),1,false,null);
-        bowlService.addBowl(bowl1);
-        inningService.updateTotalScore(inning1.getInningId(),1);
+        bowlService.addBowl(bowl5);
+        scoreUpdaterService.updateScore(inning1.getInningId(),australianPlayer8ScoreCard.getScoreCardId(),indianPlayer1ScoreCard.getScoreCardId(),bowl5.getBowlType(),1,false,null);
 
         Bowl bowl6 = new Bowl(BowlType.NORMAL,australianPlayer8.getPlayerId(),indianPlayer1.getPlayerId(),4,false,null);
-        bowlerScoreCardService.updateScoreCard(australianPlayer8ScoreCard.getScoreCardId(),4,false,null);
-        batsmanScoreCardService.updateScoreCard(indianPlayer1ScoreCard.getScoreCardId(),4,false,null);
         bowlService.addBowl(bowl1);
-        inningService.updateTotalScore(inning1.getInningId(),4);
+        scoreUpdaterService.updateScore(inning1.getInningId(),australianPlayer8ScoreCard.getScoreCardId(),indianPlayer1ScoreCard.getScoreCardId(),bowl6.getBowlType(),4,false,null);
 
         Bowl bowl7 = new Bowl(BowlType.NORMAL,australianPlayer8.getPlayerId(),indianPlayer1.getPlayerId(),0,true, WicketType.BOLD);
-        bowlerScoreCardService.updateScoreCard(australianPlayer8ScoreCard.getScoreCardId(),0,true,WicketType.BOLD);
-        batsmanScoreCardService.updateScoreCard(indianPlayer1ScoreCard.getScoreCardId(),0,true,WicketType.BOLD);
         bowlService.addBowl(bowl1);
-        inningService.updateTotalScore(inning1.getInningId(),0);
-        inningService.updateTotalWickets(inning1.getInningId(),1);
+        scoreUpdaterService.updateScore(inning1.getInningId(),australianPlayer8ScoreCard.getScoreCardId(),indianPlayer1ScoreCard.getScoreCardId(),bowl5.getBowlType(),0,true,WicketType.BOLD);
+
 
         //till now, we have created 1 over, added scores and wickets for each batsmen, and bowlers
         //total score or wicket can be found from innings, individual score or wicket can be found for each player

@@ -20,4 +20,8 @@ public class MatchRepo {
     public static MatchRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public void addMatch(Match match) {
+        matches.put(match.getMatchId(),match);
+    }
 }

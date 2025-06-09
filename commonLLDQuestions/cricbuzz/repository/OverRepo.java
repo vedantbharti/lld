@@ -20,4 +20,8 @@ public class OverRepo {
     public static OverRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public void addOver(Over over) {
+        overs.put(over.getOverId(),over);
+    }
 }

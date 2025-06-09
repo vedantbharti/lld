@@ -1,5 +1,6 @@
 package commonLLDQuestions.cricbuzz.service;
 
+import commonLLDQuestions.cricbuzz.entity.Over;
 import commonLLDQuestions.cricbuzz.repository.OverRepo;
 
 public class OverService {
@@ -8,5 +9,9 @@ public class OverService {
 
     public OverService() {
         this.overRepo = OverRepo.getInstance();
+    }
+
+    public void addOver(Over over) {
+        overRepo.addOver(over);
     }
 }

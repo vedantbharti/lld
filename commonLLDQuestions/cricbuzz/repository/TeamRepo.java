@@ -20,4 +20,12 @@ public class TeamRepo {
     public static TeamRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public void addTeam(Team team) {
+        teams.put(team.getTeamId(),team);
+    }
+
+    public Team getTeamById(String teamId){
+        return teams.get(teamId);
+    }
 }

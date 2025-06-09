@@ -1,5 +1,6 @@
 package commonLLDQuestions.cricbuzz.entity;
 
+import commonLLDQuestions.cricbuzz.enums.WicketType;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -12,14 +13,18 @@ public class ScoreCard {
     private String scoreCardId;
     private String inningId;
     private String playerId;
-    private int totalScore;
+    private int totalRunsScored;
+    private int totalRunsGiven;
     private int totalWickets;
+    private List<WicketType> wicketTypes;
 
     public ScoreCard(String inningId, String playerId) {
         this.scoreCardId = UUID.randomUUID().toString();
         this.inningId = inningId;
         this.playerId = playerId;
-        this.totalScore = 0;
+        this.totalRunsScored = 0;
+        this.totalRunsGiven = 0;
         this.totalWickets = 0;
+        this.wicketTypes = new ArrayList<>();
     }
 }

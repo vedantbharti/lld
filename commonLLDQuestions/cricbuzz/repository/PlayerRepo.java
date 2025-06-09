@@ -20,4 +20,8 @@ public class PlayerRepo {
     public static PlayerRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public void addPlayer(Player player) {
+        players.put(player.getPlayerId(),player);
+    }
 }

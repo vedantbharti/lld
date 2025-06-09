@@ -20,4 +20,8 @@ public class BowlRepo {
     public static BowlRepo getInstance() {
         return Initializer.INSTANCE;
     }
+
+    public void addBowl(Bowl bowl) {
+        bowls.put(bowl.getBowlId(),bowl);
+    }
 }
